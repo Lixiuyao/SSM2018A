@@ -4,8 +4,37 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.ssm.dao.StudentDao">
+  		<sql id="studentColums">
+			id,name,age,gender,address
+		</sql>
   		<select id="findAll" resultType="Student">
   			select id,name,age,gender,address from student
   		</select>
+  		
+  		<select id="getTotalCount" resultType="int">
+  			select count(id) from student
+  		</select>
+  		<select id="findPageBeanListByCondition" resultType="Student">
+  			SELECT <include refid="studentColums"/> from student limit #{offset},#{condition.pageSize}
+  		</select>
+  		<select id="findByByName" parameterType="string"  resultType="Student">
+  			select <include refid="studentColums"/> from student where name like '%${value}%' <!-- "%"#{name}"%" --><!-- concat('%', #{name}, '%') -->
+  		</select>
+  		<select id="findByIdd" parameterType="int"  resultType="Student">
+  			select <include refid="studentColums"/> from student where id=#{id}
+  		</select>
+  		<select id="getPageList" resultType="Student">
+  			SELECT <include refid="studentColums"/> 
+  			from student 
+  			limit ${(pageNo-1)*pageSize},${pageSize}
+  		</select>
+  		
+  		<delete id="deleteById" parameterType="int" >
+  			delete  from student where id=#{id} 
+  		</delete>
+  		<insert id="CreateSt" parameterType="Student" >
+  			insert into student(id,name,age,gender,address) values(#{id},#{name},#{age},#{gender},#{address})
+  		</insert>
+  	
   </mapper>
   

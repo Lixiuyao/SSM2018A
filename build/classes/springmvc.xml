@@ -9,9 +9,15 @@
 
 	<!-- 扫描 Controller @Service base-package 是要扫描注解的包-->
 	<context:component-scan base-package="com.ssm.controller"/>
+	<context:component-scan base-package="com.ssm.vo"/>
 	<!-- 注解驱动 -->
 	
 	<mvc:annotation-driven/>
+	<!-- 对静态资源的访问：使用默认的处理方式而不是交给DispatcherServlet -->
+
+	<mvc:default-servlet-handler/>
+	
+	
 	<!-- 视图解析器
     	如果Controller中书写的是视图的逻辑名，这个视图解析器必须要配置。
  		   前缀+视图逻辑名+后缀=真实路径
