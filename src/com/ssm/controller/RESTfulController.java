@@ -77,6 +77,19 @@ public class RESTfulController {
 		return null;
 		
 	}
+	@RequestMapping(value="/students/{id}",method=RequestMethod.POST)
+	@ResponseBody
+	public Integer Uodate2(@PathVariable("id")Integer id){
+		Student student = new Student();
+		student.setId(id);
+		student.setName("嘀嘀");
+		student.setAge(110);
+		student.setGender("男");
+		student.setAddress("南宁");
+		//int count = ((IStudentService) studentService).Add(student);
+		return null;
+		
+	}
 	
 	
 }
