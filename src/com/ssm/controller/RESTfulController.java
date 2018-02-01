@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ssm.entity.Student;
 import com.ssm.service.IStudentService;
 
+import sun.util.logging.resources.logging_zh_CN;
+
 @Controller
 public class RESTfulController {
 	
@@ -80,15 +82,13 @@ public class RESTfulController {
 	@RequestMapping(value="/students/{id}",method=RequestMethod.POST)
 	@ResponseBody
 	public Integer Uodate2(@PathVariable("id")Integer id){
-		Student student = new Student();
-		student.setId(id);
-		student.setName("嘀嘀");
-		student.setAge(110);
-		student.setGender("男");
-		student.setAddress("南宁");
-		//int count = ((IStudentService) studentService).Add(student);
+		
 		return null;
 		
+		
+	}
+	public void test1(){
+		System.out.println("RESTfulController.test1()");
 	}
 	
 	
